@@ -11,11 +11,9 @@
 
 </div>
 
-Official implementation of **[Aging with GRACE: Lifelong Model Editing with Discrete Key-Value Adaptors](https://arxiv.org/abs/2211.11031)** (NeurIPS 2023).
-
+Modified COde of Official implementation of **[Aging with GRACE: Lifelong Model Editing with Discrete Key-Value Adaptors](https://arxiv.org/abs/2211.11031)** (NeurIPS 2023).
+for NUS assignment
 <img width="1866" alt="image" src="https://github.com/Thartvigsen/GRACE/assets/26936677/8f28ab99-2411-4fd8-949b-8373ebfff3b5">
-
-Please feel free to email [Tom](https://www.tomhartvigsen.com) or raise an issue with this repository and we'll get back to you as soon as possible.
 
 ## Setup
 1. Create a virtual environment (we use conda)
@@ -30,7 +28,11 @@ Please feel free to email [Tom](https://www.tomhartvigsen.com) or raise an issue
     ```
     pip install -e .
     ```
-
+Additional Fixes
+4. Fix Dataset
+  ```
+  pip install -U datasets
+  ```
 ## Data
 The QA experiments use data linked by the [MEND](https://github.com/eric-mitchell/mend) repository. Per their instructions, you can download the data for NQ and zsRE from [their Google Drive link](https://drive.google.com/drive/folders/1jAqBE45jEKR-5pMkwxlVQ0V8eKxqWbxA) and unzip each sub-directory into `grace/data`. SCOTUS and Hallucination data are handled through huggingface.
 
@@ -42,9 +44,9 @@ Experiments are run using [main.py](./grace/main.py). Experiment settings and hy
 python grace/main.py experiment=hallucination model=gpt2xl editor=grace
 ```
 
-### Editing BERT on SCOTUS with GRACE
+### Editing BERT on SCOTUS with GRACE (Fix: use scopus-bert instead of bert)
 ```
-python grace/main.py experiment=scotus model=bert editor=grace
+python grace/main.py experiment=scotus model=scopus-bert editor=grace
 ```
 
 ### Editing T5 on zsRE with GRACE
@@ -64,7 +66,7 @@ python grace/main.py experiment=qa model=t5small editor=grace
     * [./grace/dataset.py](./grace/dataset.py) contains source code for each compared dataset.
     * [./grace/metrics.py](./grace/metrics.py) contains source code for each compared dataset.
     * [./grace/models.py](./grace/models.py) contains source code for loading pretrained models.
-
+* [./create_plots.ipynb](./create_plots.ipynv) contains ipynb file for generation of plots
 ## Citation
 Please use the following to cite this work:
 ```
